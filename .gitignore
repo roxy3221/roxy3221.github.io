@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# Vercel / Deployment
+.vercel
+.env
