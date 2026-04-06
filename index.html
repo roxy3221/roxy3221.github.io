@@ -149,6 +149,62 @@
 
         </div>
       </div>
+
+      <!-- Second Mega-Card: RAG SOP System -->
+      <div class="mega-card" style="margin-top: 40px;">
+        <!-- Text Header -->
+        <div>
+          <div class="project-header">
+            <h3 class="project-title"><span class="zh">用户风控 SOP 智能助手 (Web3 交易所)</span><span class="en">Web3 Exchange Risk Control RAG Agent</span></h3>
+            <div class="project-badge"><span class="zh">知识库赋能</span><span class="en">RAG System</span></div>
+          </div>
+          <p class="project-desc zh">
+            为了解决交易所风控团队在飞书 (Lark) 中手动检索海量复杂风控 SOP 导致效率低下、易出错的痛点，构建了基于 RAG (检索增强生成) 架构的垂直领域问答系统。实现自然语言反欺诈规则查询与自动处罚定级，并精准溯源业务文档。
+          </p>
+          <p class="project-desc en">
+            Built to solve inefficiencies caused by manual SOP lookups for the User Risk Control team. This Retrieval-Augmented Generation (RAG) system translates natural language queries into exact anti-fraud policy references and handling procedures, citing specific Feishu (Lark) document chunks.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">LangChain</span>
+            <span class="stack-tag">Vector DB</span>
+            <span class="stack-tag">Document Embedding</span>
+            <span class="stack-tag">Feishu / Lark Integration</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Zone 1 & Zone 2 Layout -->
+        <div class="demo-layout">
+          
+          <!-- Left: Auditor Phone/Chat Interface -->
+          <div class="phone-mockup">
+            <div class="phone-notch"></div>
+            <div class="phone-screen" id="ragChatScreen">
+              <!-- Animated dynamically via JS -->
+              <div class="chat-bubble user">
+                <span class="zh">用户疑似账户被盗怎么处理？</span>
+                <span class="en">How should we handle a suspected compromised account?</span>
+              </div>
+            </div>
+            <button id="replayRagBtn" style="position:absolute; bottom:10px; right:10px; background:rgba(255,255,255,0.2); border:none; color:#fff; border-radius:50%; width:30px; height:30px; cursor:pointer;">↻</button>
+          </div>
+
+          <!-- Right: Vector Terminal -->
+          <div class="dashboard-terminal">
+            <div class="dash-header">
+              <span style="color:#a5adc6; font-weight:600;">Vector_Retrieval.log</span>
+              <button class="dash-btn" id="triggerRAG">
+                <span class="zh">🔎 执行向量检索</span><span class="en">🔎 Run Vector Search</span>
+              </button>
+            </div>
+            <div class="term-output" id="ragTermOutput">
+              <div class="term-line animate-in" style="font-style:italic;">Awaiting semantic query formulation...</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 

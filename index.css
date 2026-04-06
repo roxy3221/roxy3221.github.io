@@ -194,10 +194,16 @@ nav {
 }
 .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
 .stack-tag {
-  font-size: 12px; font-weight: 500; font-family: 'JetBrains Mono', monospace;
-  padding: 3px 10px; border-radius: 6px;
-  background: rgba(255,255,255,0.05); color: var(--muted);
-  border: 1px solid var(--border);
+  font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 500;
+  padding: 4px 10px; border-radius: 99px;
+  background: var(--glass-b); border: 1px solid var(--border);
+  color: var(--muted);
+}
+.rag-source-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; padding: 4px 8px; border-radius: 4px;
+  background: rgba(0, 185, 107, 0.1); border: 1px solid rgba(0, 185, 107, 0.2);
+  color: #00B96B; cursor: pointer; margin-top: 8px;
 }
 .metric-row { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
 .metric {

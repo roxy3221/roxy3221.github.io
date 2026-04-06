@@ -140,4 +140,112 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 3. RAG Phone Replay Animation (Simulating Chat)
+  const replayRagBtn = document.getElementById('replayRagBtn');
+  const ragChatScreen = document.getElementById('ragChatScreen');
+  
+  if (replayRagBtn && ragChatScreen) {
+    const renderRagChat = () => {
+      ragChatScreen.innerHTML = `
+        <div class="chat-bubble user animate-in">
+          <span class="zh">用户疑似账户被盗怎么处理？</span>
+          <span class="en">How should we handle a suspected compromised account?</span>
+        </div>
+        <div class="chat-bubble pudding animate-in" style="animation-delay: 1s;">
+          <span class="zh">正在检索知识库...</span>
+          <span class="en">Retrieving Knowledge Base...</span>
+        </div>
+        <div class="chat-bubble pudding animate-in" style="animation-delay: 3s; border: 1px solid #00B96B;">
+          <div style="margin-bottom: 8px;">
+            <span class="zh">根据最近的账号安全规范，应立即执行以下操作：</span>
+            <span class="en">According to the latest account security policy, follow these steps immediately:</span>
+          </div>
+          <ol style="margin: 0; padding-left: 16px; font-size: 13px;">
+            <li><span class="zh">立刻冻结该账户的出金及高危操作权限。</span><span class="en">Freeze outbound transfers and high-risk actions.</span></li>
+            <li><span class="zh">引导用户进入人脸/实名身份验证找回流程。</span><span class="en">Guide the user to the facial/ID verification recovery process.</span></li>
+            <li><span class="zh">对于异常登录的设备 IP 自动加入观察名单。</span><span class="en">Add the anomalous login IP to the watchlist automatically.</span></li>
+          </ol>
+          <div class="rag-source-chip">📑 飞书文档: 账号安全干预 SOP v2.0</div>
+        </div>
+      `;
+    };
+    
+    // Initial Render
+    renderRagChat();
+
+    replayRagBtn.addEventListener('click', () => {
+      ragChatScreen.innerHTML = '';
+      void ragChatScreen.offsetWidth; // trigger reflow
+      renderRagChat();
+    });
+  }
+
+  // 4. RAG Vector Terminal Injection
+  const triggerRAG = document.getElementById('triggerRAG');
+  const ragTermOutput = document.getElementById('ragTermOutput');
+
+  if (triggerRAG && ragTermOutput) {
+    triggerRAG.addEventListener('click', async () => {
+      if (document.body.classList.contains('lang-zh')) {
+        ragTermOutput.innerHTML = `
+          <div class="term-line animate-in">>>> [Query]: "用户疑似账户被盗怎么处理？"</div>
+        `;
+        await sleep(600);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in" style="color:var(--muted);">[System] 正在调用 text-embedding-ada-002 提取语义特征...</div>
+        `;
+        await sleep(800);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in" style="color:var(--muted);">[Vector DB] 执行余弦相似度检索 (Top-K = 2)</div>
+        `;
+        await sleep(1000);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in" style="color:#d4d4d4">
+            [检索命中 1]<br/>
+            &nbsp;&nbsp;Doc_ID: <span style="color:#9ece6a">"lark_sop_account_security"</span><br/>
+            &nbsp;&nbsp;Similarity: <span style="color:#ff9e64">0.942</span><br/>
+            &nbsp;&nbsp;Snippet: "当用户申诉账户被盗时，安全客服需第一..."
+          </div>
+        `;
+        await sleep(800);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in term-success">✔ 上下文组装完成 (Context length: 1,842 tokens)</div>
+        `;
+        await sleep(600);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in">>>> [LLM Generation]: "根据账号安全干预 SOP v2.0，首先应立即冻结该账户..."</div>
+        `;
+      } else {
+        ragTermOutput.innerHTML = `
+          <div class="term-line animate-in">>>> [Query]: "How should we handle a suspected compromised account?"</div>
+        `;
+        await sleep(600);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in" style="color:var(--muted);">[System] Generating embeddings via text-embedding-ada-002...</div>
+        `;
+        await sleep(800);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in" style="color:var(--muted);">[Vector DB] Performing Cosine Similarity Search (Top-K = 2)</div>
+        `;
+        await sleep(1000);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in" style="color:#d4d4d4">
+            [Match 1]<br/>
+            &nbsp;&nbsp;Doc_ID: <span style="color:#9ece6a">"lark_sop_account_security"</span><br/>
+            &nbsp;&nbsp;Similarity: <span style="color:#ff9e64">0.942</span><br/>
+            &nbsp;&nbsp;Snippet: "When a user appeals account compromise, support must..."
+          </div>
+        `;
+        await sleep(800);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in term-success">✔ Context successfully injected (Length: 1,842 tokens)</div>
+        `;
+        await sleep(600);
+        ragTermOutput.innerHTML += `
+          <div class="term-line animate-in">>>> [LLM Generation]: "According to the Account Security SOP v2.0, first freeze..."</div>
+        `;
+      }
+    });
+  }
 });
